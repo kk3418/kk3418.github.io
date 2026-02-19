@@ -11,7 +11,7 @@
 
 ## 啟動方式
 
-### 快速啟動（Python）
+### Python
 
 ```bash
 ./serve.sh          # 在 http://localhost:3000 啟動
