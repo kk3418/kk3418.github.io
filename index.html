@@ -1,1 +1,322 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"><meta name="description" content="Web site created using create-react-app"/><title>React App</title><link href="/static/css/main.9ba2a938.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(e){function r(r){for(var n,l,a=r[0],f=r[1],i=r[2],c=0,s=[];c<a.length;c++)l=a[c],Object.prototype.hasOwnProperty.call(o,l)&&o[l]&&s.push(o[l][0]),o[l]=0;for(n in f)Object.prototype.hasOwnProperty.call(f,n)&&(e[n]=f[n]);for(p&&p(r);s.length;)s.shift()();return u.push.apply(u,i||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,a=1;a<t.length;a++){var f=t[a];0!==o[f]&&(n=!1)}n&&(u.splice(r--,1),e=l(l.s=t[0]))}return e}var n={},o={1:0},u=[];function l(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,l),t.l=!0,t.exports}l.m=e,l.c=n,l.d=function(e,r,t){l.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},l.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},l.t=function(e,r){if(1&r&&(e=l(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(l.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)l.d(t,n,function(r){return e[r]}.bind(null,n));return t},l.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return l.d(r,"a",r),r},l.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},l.p="/";var a=this["webpackJsonpavl-exam"]=this["webpackJsonpavl-exam"]||[],f=a.push.bind(a);a.push=r,a=a.slice();for(var i=0;i<a.length;i++)r(a[i]);var p=f;t()}([])</script><script src="/static/js/2.c3d22acc.chunk.js"></script><script src="/static/js/main.a69d8e86.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commands Cheatsheet</title>
+<style>
+  /* ---- Dark theme (grayish) ---- */
+  :root {
+    --bg:         #2b2b2b;
+    --header-bg:  #333333;
+    --card-bg:    #3a3a3a;
+    --card-hover: #444444;
+    --text:       #d8d8d8;
+    --text-muted: #999;
+    --accent:     #e94560;
+    --cmd-color:  #6ecfff;
+    --tag-bg:     #4a4a4a;
+    --tag-color:  #6ecfff;
+    --border:     #555;
+    --input-bg:   #2b2b2b;
+    --shadow:     rgba(0,0,0,.4);
+    --placeholder: #777;
+  }
+
+  /* ---- Light theme (beige / warm) ---- */
+  [data-theme="light"] {
+    --bg:         #f5f0e8;
+    --header-bg:  #ebe5d9;
+    --card-bg:    #fff8ef;
+    --card-hover: #f0e8d8;
+    --text:       #3d3529;
+    --text-muted: #8a7e6e;
+    --accent:     #c7384f;
+    --cmd-color:  #1a7a8a;
+    --tag-bg:     #e4daca;
+    --tag-color:  #1a7a8a;
+    --border:     #cdc3b0;
+    --input-bg:   #fff8ef;
+    --shadow:     rgba(100,80,50,.12);
+    --placeholder: #b0a48e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: background .3s, color .3s;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--header-bg);
+    padding: 20px;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: background .3s;
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+  header h1 {
+    font-size: 1.4rem;
+    color: var(--accent);
+  }
+  #theme-toggle {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: background .2s;
+  }
+  #theme-toggle:hover { background: var(--card-hover); }
+  #search {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    font-size: 1rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color .2s, background .3s, color .3s;
+  }
+  #search:focus { border-color: var(--accent); }
+  #search::placeholder { color: var(--placeholder); }
+  #count {
+    text-align: center;
+    font-size: .85rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+  main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 20px 40px;
+  }
+  .category {
+    margin-bottom: 24px;
+  }
+  .category-title {
+    font-size: 1.1rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+  }
+  .cmd-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    transition: background .15s;
+  }
+  .cmd-card:hover { background: var(--card-hover); }
+  .cmd-card .cmd {
+    font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+    color: var(--cmd-color);
+    font-size: 1.05rem;
+    cursor: pointer;
+    word-break: break-all;
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+  .hidden { display: none; }
+  .toast {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: #fff; padding: 8px 20px;
+    border-radius: 6px; font-size: .9rem;
+    opacity: 0; transition: opacity .3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <h1>Commands Cheatsheet</h1>
+    <button id="theme-toggle" title="Toggle light/dark mode">&#9789;</button>
+  </div>
+  <input type="text" id="search" placeholder="Search commands..." autofocus>
+  <div id="count"></div>
+</header>
+
+<main id="app"></main>
+<div class="toast" id="toast">Copied!</div>
+
+<script>
+// ============================================================
+//  COMMANDS DATA - Edit this array to add/remove commands
+// ============================================================
+const COMMANDS = [
+  // --- Git ---
+  { cmd: "git log --oneline --graph --all", desc: "Show commit graph", category: "Git", tags: ["log", "history"] },
+  { cmd: "git stash push -m 'message'", desc: "Stash changes with a name", category: "Git", tags: ["stash"] },
+  { cmd: "git stash pop", desc: "Apply and remove latest stash", category: "Git", tags: ["stash"] },
+  { cmd: "git diff --staged", desc: "Show staged changes", category: "Git", tags: ["diff"] },
+  { cmd: "git rebase -i HEAD~3", desc: "Interactive rebase last 3 commits", category: "Git", tags: ["rebase"] },
+  { cmd: "git cherry-pick <commit>", desc: "Apply a specific commit to current branch", category: "Git", tags: ["cherry-pick"] },
+  { cmd: "git remote prune origin", desc: "Remove stale remote tracking branches", category: "Git", tags: ["remote", "cleanup"] },
+	{ cmd: "git branch -m <old_branch> <new_branch>", desc: "Rename a branch", category: "Git", tags: ["branch"] },
+
+  // --- Docker ---
+  { cmd: "docker ps -a", desc: "List all containers (including stopped)", category: "Docker", tags: ["container"] },
+  { cmd: "docker logs -f <container>", desc: "Follow container logs", category: "Docker", tags: ["logs"] },
+  { cmd: "docker exec -it <container> /bin/sh", desc: "Shell into a running container", category: "Docker", tags: ["exec", "shell"] },
+  { cmd: "docker system prune -af", desc: "Remove all unused images, containers, networks", category: "Docker", tags: ["cleanup"] },
+  { cmd: "docker compose up -d", desc: "Start services in detached mode", category: "Docker", tags: ["compose"] },
+
+  // --- Linux / macOS ---
+  { cmd: "lsof -i :8080", desc: "Find process using port 8080", category: "Linux / macOS", tags: ["network", "port"] },
+  { cmd: "du -sh * | sort -rh | head -10", desc: "Top 10 largest items in current dir", category: "Linux / macOS", tags: ["disk"] },
+  { cmd: "tar czf archive.tar.gz folder/", desc: "Create gzipped tar archive", category: "Linux / macOS", tags: ["archive"] },
+  { cmd: "tar xzf archive.tar.gz", desc: "Extract gzipped tar archive", category: "Linux / macOS", tags: ["archive"] },
+  { cmd: "rsync -avz src/ dest/", desc: "Sync files with progress", category: "Linux / macOS", tags: ["sync", "copy"] },
+  { cmd: "curl -s url | jq '.'", desc: "Fetch JSON and pretty print", category: "Linux / macOS", tags: ["curl", "json"] },
+	{ cmd: "defaults write -g ApplePressAndHoldEnabled -bool false", category: "Linux / macOS", desc: "Disable key repeat delay on macOS", tags: ["macOS", "keyboard"] },
+
+  // --- MySQL / MariaDB ---
+  { cmd: "mysql -h <ip> -P 3306 -u <user> -p", desc: "Remote connect to MySQL", category: "MySQL / MariaDB", tags: ["connect", "remote"] },
+  { cmd: "mysql -h <ip> -u <user> -p <dbname>", desc: "Connect and select database directly", category: "MySQL / MariaDB", tags: ["connect"] },
+  { cmd: "SHOW DATABASES;", desc: "List all databases", category: "MySQL / MariaDB", tags: ["info"] },
+  { cmd: "SHOW TABLES;", desc: "List all tables in current database", category: "MySQL / MariaDB", tags: ["info"] },
+  { cmd: "SHOW PROCESSLIST;", desc: "Show active connections / queries", category: "MySQL / MariaDB", tags: ["monitor"] },
+  { cmd: "SHOW GRANTS FOR '<user>'@'<host>';", desc: "Show permissions for a user", category: "MySQL / MariaDB", tags: ["user", "permissions"] },
+  { cmd: "CREATE USER '<user>'@'<host>' IDENTIFIED BY '<password>';", desc: "Create a new user", category: "MySQL / MariaDB", tags: ["user"] },
+  { cmd: "GRANT ALL PRIVILEGES ON <db>.* TO '<user>'@'<host>';", desc: "Grant all privileges on a database", category: "MySQL / MariaDB", tags: ["user", "permissions"] },
+  { cmd: "GRANT SELECT, INSERT, UPDATE ON <db>.* TO '<user>'@'<host>';", desc: "Grant specific privileges", category: "MySQL / MariaDB", tags: ["user", "permissions"] },
+  { cmd: "REVOKE ALL PRIVILEGES ON <db>.* FROM '<user>'@'<host>';", desc: "Revoke all privileges from a user", category: "MySQL / MariaDB", tags: ["user", "permissions"] },
+  { cmd: "FLUSH PRIVILEGES;", desc: "Reload grant tables (apply permission changes)", category: "MySQL / MariaDB", tags: ["permissions"] },
+  { cmd: "DROP USER '<user>'@'<host>';", desc: "Delete a user", category: "MySQL / MariaDB", tags: ["user"] },
+  { cmd: "mysqldump -h <ip> -u <user> -p <db> > dump.sql", desc: "Dump a remote database to file", category: "MySQL / MariaDB", tags: ["backup", "export"] },
+  { cmd: "mysql -h <ip> -u <user> -p <db> < dump.sql", desc: "Restore a database from dump file", category: "MySQL / MariaDB", tags: ["restore", "import"] },
+  { cmd: "SELECT table_name, ROUND(data_length/1024/1024,2) AS 'MB' FROM information_schema.tables WHERE table_schema='<db>' ORDER BY data_length DESC;", desc: "Show table sizes in MB", category: "MySQL / MariaDB", tags: ["info", "disk"] },
+
+  // --- PostgreSQL ---
+  { cmd: "psql -h <ip> -p 5432 -U <user> -d <db>", desc: "Remote connect to PostgreSQL", category: "PostgreSQL", tags: ["connect", "remote"] },
+  { cmd: "\\l", desc: "List all databases", category: "PostgreSQL", tags: ["info"] },
+  { cmd: "\\dt", desc: "List all tables in current schema", category: "PostgreSQL", tags: ["info"] },
+  { cmd: "\\du", desc: "List all users and roles", category: "PostgreSQL", tags: ["user"] },
+  { cmd: "\\dp", desc: "Show table access privileges", category: "PostgreSQL", tags: ["permissions"] },
+  { cmd: "CREATE USER <user> WITH PASSWORD '<password>';", desc: "Create a new user", category: "PostgreSQL", tags: ["user"] },
+  { cmd: "GRANT ALL PRIVILEGES ON DATABASE <db> TO <user>;", desc: "Grant all privileges on a database", category: "PostgreSQL", tags: ["user", "permissions"] },
+  { cmd: "GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO <user>;", desc: "Grant DML on all tables in schema", category: "PostgreSQL", tags: ["user", "permissions"] },
+  { cmd: "REVOKE ALL PRIVILEGES ON DATABASE <db> FROM <user>;", desc: "Revoke all privileges from a user", category: "PostgreSQL", tags: ["user", "permissions"] },
+  { cmd: "ALTER USER <user> WITH SUPERUSER;", desc: "Promote user to superuser", category: "PostgreSQL", tags: ["user", "permissions"] },
+  { cmd: "pg_dump -h <ip> -U <user> <db> > dump.sql", desc: "Dump a remote database to file", category: "PostgreSQL", tags: ["backup", "export"] },
+  { cmd: "psql -h <ip> -U <user> <db> < dump.sql", desc: "Restore a database from dump file", category: "PostgreSQL", tags: ["restore", "import"] },
+  { cmd: "SELECT pid, usename, application_name, state, query FROM pg_stat_activity;", desc: "Show active connections and queries", category: "PostgreSQL", tags: ["monitor"] },
+
+  // --- npm / Node ---
+  { cmd: "npx depcheck", desc: "Find unused dependencies", category: "npm / Node", tags: ["dependencies", "cleanup"] },
+  { cmd: "npm ls --depth=0", desc: "List top-level installed packages", category: "npm / Node", tags: ["dependencies"] },
+  { cmd: "node --inspect app.js", desc: "Start with debugger attached", category: "npm / Node", tags: ["debug"] },
+];
+
+// ============================================================
+//  Rendering & Search
+// ============================================================
+const app = document.getElementById('app');
+const searchInput = document.getElementById('search');
+const countEl = document.getElementById('count');
+const toast = document.getElementById('toast');
+
+function render(filter = '') {
+  const q = filter.toLowerCase();
+  const matched = COMMANDS.filter(c =>
+    !q ||
+    c.cmd.toLowerCase().includes(q) ||
+    c.desc.toLowerCase().includes(q) ||
+    c.category.toLowerCase().includes(q) ||
+    c.tags.some(t => t.toLowerCase().includes(q))
+  );
+
+  // Group by category
+  const groups = {};
+  matched.forEach(c => {
+    (groups[c.category] ??= []).push(c);
+  });
+
+  let html = '';
+  for (const [cat, cmds] of Object.entries(groups)) {
+    html += `<div class="category">
+      <div class="category-title">${cat}</div>`;
+    for (const c of cmds) {
+      const tagsHtml = c.tags.map(t => `<span class="tag">${t}</span>`).join('');
+      html += `<div class="cmd-card">
+        <div class="cmd" onclick="copyCmd(this)">${esc(c.cmd)}</div>
+        <div class="desc">${esc(c.desc)}</div>
+        <div class="tags">${tagsHtml}</div>
+      </div>`;
+    }
+    html += '</div>';
+  }
+
+  app.innerHTML = html || '<p style="text-align:center;color:#666;margin-top:60px;">No commands found.</p>';
+  countEl.textContent = `${matched.length} / ${COMMANDS.length} commands`;
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function copyCmd(el) {
+  navigator.clipboard.writeText(el.textContent);
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 1200);
+}
+
+searchInput.addEventListener('input', () => render(searchInput.value));
+render();
+
+// ============================================================
+//  Theme toggle
+//  - 預設跟隨系統 prefers-color-scheme
+//  - 手動切換後記入 localStorage，覆蓋系統設定
+// ============================================================
+const toggleBtn = document.getElementById('theme-toggle');
+const root = document.documentElement;
+const sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function setTheme(theme, save = true) {
+  root.setAttribute('data-theme', theme);
+  toggleBtn.innerHTML = theme === 'light' ? '&#9728;' : '&#9789;';
+  if (save) localStorage.setItem('theme', theme);
+}
+
+// 初始化：localStorage 優先，否則跟系統
+const saved = localStorage.getItem('theme');
+setTheme(saved || (sysDark.matches ? 'dark' : 'light'), false);
+
+// 使用者手動切換
+toggleBtn.addEventListener('click', () => {
+  setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+// 系統設定改變時，只在使用者「沒有手動覆蓋」的情況下跟著變
+sysDark.addEventListener('change', e => {
+  if (!localStorage.getItem('theme')) {
+    setTheme(e.matches ? 'dark' : 'light', false);
+  }
+});
+</script>
+</body>
+</html>
+
