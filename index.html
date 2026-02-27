@@ -230,7 +230,8 @@ const COMMANDS = [
   { cmd: "node --inspect app.js", desc: "Start with debugger attached", category: "npm / Node", tags: ["debug"] },
 
 	// -- opensssl ---
-	{ cmd: "openssl req -new -newkey rsa:2048 -nodes -keyout server.key -out server.csr", category: "openssl", tags: ["csr", "ssl"] },
+	{ cmd: "openssl req -new -newkey rsa:2048 -nodes -keyout server.key -out server.csr", desc: "Generate a new private key and CSR", category: "openssl", tags: ["csr", "ssl"] },
+];
 
 // ============================================================
 //  Rendering & Search
